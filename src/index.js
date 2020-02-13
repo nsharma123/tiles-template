@@ -11,7 +11,7 @@ const tile = html`
         >
           <div class="tile-img">
             <img
-              class="item-img "
+              class="item-img"
               src="https://archive.org/services/img/tea_20200106"
               style="height:233px"
             />
@@ -55,6 +55,59 @@ const tile = html`
   </div>
 `;
 
+function getTile(item) {
+  return html`
+    <div class="item-ia" data-id="${item.title}" data-mediatype="texts">
+      <div class="C234">
+        <div class="item-ttl C C2">
+          <a
+            href="${item.href}"
+            title="${item.title}"
+            data-event-click-tracking="GenericNonCollection|ItemTile"
+          >
+            <div class="tile-img">
+              <img class="item-img" src="${item.img}" style="height:233px" />
+            </div>
+            <!--/.tile-img-->
+            <div class="ttl">${item.title}</div>
+          </a>
+        </div>
+        <div class="hidden-tiles pubdate C C3">
+          <nobr class="hidden-xs">Jun 26, 2015</nobr>
+          <nobr class="hidden-sm hidden-md hidden-lg">06/15</nobr>
+        </div>
+        <div class="by C C4">
+          <span class="hidden-lists">by</span>
+          <span class="byv" title="${item.by}">${item.by}</span>
+        </div>
+        <!--/.C4-->
+      </div>
+      <!--/.C234-->
+
+      <div class="statbar ">
+        <div class="mt-icon C C5">
+          <span class="iconochive-texts" aria-hidden="true"></span
+          ><span class="sr-only">${item.mediatype}</span>
+        </div>
+        <h6 class="stat ">
+          <span class="iconochive-eye" aria-hidden="true"></span
+          ><span class="sr-only">eye</span> <nobr>${item.views}</nobr>
+        </h6>
+
+        <h6 class="stat">
+          <span class="iconochive-favorite" aria-hidden="true"></span
+          ><span class="sr-only">favorite</span>${item.favorite}
+        </h6>
+        <h6 class="stat">
+          <span class="iconochive-comment" aria-hidden="true"></span
+          ><span class="sr-only">comment</span>${item.comment}
+        </h6>
+      </div>
+      <!--/.statbar-->
+    </div>
+  `;
+}
+
 class Tile extends LitElement {
   static get properties() {
     return {
@@ -67,13 +120,14 @@ class Tile extends LitElement {
       .item-ia {
         background-color: #fff;
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        min-height: 20px;
-        margin-bottom: 30px;
+        // min-height: 20px;
+        // margin-bottom: 30px;
         border: 1px solid #e9e9e9;
-        color: #000;
-        width: 180px;
+        // color: #CCC;
+        // width: 180px;
         text-align: center;
         display: inline-block;
+        margin: 10px;
       }
       .hidden-tiles {
         display: none !important;
@@ -91,11 +145,20 @@ class Tile extends LitElement {
         font-size: 14px;
         color: #000 !important;
       }
+      .item-img {
+        display: inline;
+        width: 180px;
+        height: auto;
+        max-width: 180px;
+        margin-left: -1px;
+        max-height: 250px;
+        background-color: #fff;
+      }
       .by {
         margin-bottom: 3px;
         padding: 0 6px;
         line-height: 1.2;
-        color: #979797;
+        // color: #979797;
         text-align: left;
         font-size: 10px;
         max-height: 24px;
@@ -123,7 +186,7 @@ class Tile extends LitElement {
         padding: 1px 0 1px 10px;
         font-size: 9px;
         font-weight: 200;
-        color: #979797;
+        color: #888;
       }
       h6.stat span {
         display: block;
@@ -138,15 +201,46 @@ class Tile extends LitElement {
     super();
 
     this.items = [
-      { type: "button", message: "hello" },
-      { type: "link", url: "#", message: "world" },
-      { type: "none", message: "foo" }
+      {
+        title: "Pagan Tea Break - Introduction",
+        href:
+          "https://archive.org/details/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        img:
+          "https://archive.org/services/img/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        by: "melodic galoiwin - pagan tea break",
+        mediatype: "Audio",
+        views: "1001",
+        favorite: "20",
+        comment: "10"
+      },
+      {
+        title: "Tea_Party_Break_Up_",
+        href: "https://archive.org/details/Tea_Party_Break_Up_",
+        img: "https://archive.org/services/img/Tea_Party_Break_Up_",
+        by: "gerard arthua",
+        mediatype: "Texts",
+        views: "101",
+        favorite: "10",
+        comment: "2"
+      },
+      {
+        title: "ws_Tea_Field_1920x1080",
+        href: "https://archive.org/details/ws_Tea_Field_1920x1080",
+        img: "https://archive.org/services/img/ws_Tea_Field_1920x1080",
+        by: "crispin cooper",
+        mediatype: "Video",
+        views: "1001",
+        favorite: "20",
+        comment: "10"
+      }
     ];
   }
 
   render() {
     return html`
-      ${tile} ${tile}
+      <!-- {tile} {tile} -->
+      <!-- Map each items to it's own template -->
+      ${this.items.map(getTile)}
     `;
   }
 }
@@ -162,45 +256,6 @@ class TemplateWrapping extends LitElement {
 
   constructor() {
     super();
-
-    this.items = [
-      {
-        title: "Pagan Tea Break - Introduction",
-        href:
-          "https://archive.org/details/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
-        img:
-          "https://archive.org/services/img/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
-        by: "melodic galoiwin - pagan tea break",
-        mediatype: "Texts",
-        views: "1001",
-        favorite: "20",
-        comment: "10"
-      },
-      {
-        title: "Pagan Tea Break - Introduction",
-        href:
-          "https://archive.org/details/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
-        img:
-          "https://archive.org/services/img/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
-        by: "melodic galoiwin - pagan tea break",
-        mediatype: "Texts",
-        views: "1001",
-        favorite: "20",
-        comment: "10"
-      },
-      {
-        title: "Pagan Tea Break - Introduction",
-        href:
-          "https://archive.org/details/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
-        img:
-          "https://archive.org/services/img/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
-        by: "melodic galoiwin - pagan tea break",
-        mediatype: "Texts",
-        views: "1001",
-        favorite: "20",
-        comment: "10"
-      }
-    ];
   }
 
   render() {
