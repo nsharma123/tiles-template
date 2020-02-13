@@ -120,11 +120,7 @@ class Tile extends LitElement {
       .item-ia {
         background-color: #fff;
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        // min-height: 20px;
-        // margin-bottom: 30px;
         border: 1px solid #e9e9e9;
-        // color: #CCC;
-        // width: 180px;
         text-align: center;
         display: inline-block;
         margin: 10px;
@@ -146,19 +142,15 @@ class Tile extends LitElement {
         color: #000 !important;
       }
       .item-img {
-        display: inline;
         width: 180px;
-        height: auto;
         max-width: 180px;
-        margin-left: -1px;
         max-height: 250px;
-        background-color: #fff;
       }
       .by {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
         padding: 0 6px;
         line-height: 1.2;
-        // color: #979797;
+        color: #979797;
         text-align: left;
         font-size: 10px;
         max-height: 24px;
