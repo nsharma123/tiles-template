@@ -70,10 +70,10 @@ class Tile extends LitElement {
         min-height: 20px;
         margin-bottom: 30px;
         border: 1px solid #e9e9e9;
-        color: #ccc;
-        position: absolute;
+        color: #000;
         width: 180px;
         text-align: center;
+        display: inline-block;
       }
       .hidden-tiles {
         display: none !important;
@@ -125,6 +125,9 @@ class Tile extends LitElement {
         font-weight: 200;
         color: #979797;
       }
+      h6.stat span {
+        display: block;
+      }
       a {
         color: #000;
       }
@@ -143,7 +146,7 @@ class Tile extends LitElement {
 
   render() {
     return html`
-      ${tile}
+      ${tile} ${tile}
     `;
   }
 }
@@ -161,9 +164,42 @@ class TemplateWrapping extends LitElement {
     super();
 
     this.items = [
-      { type: "button", message: "hello" },
-      { type: "link", url: "#", message: "world" },
-      { type: "none", message: "foo" }
+      {
+        title: "Pagan Tea Break - Introduction",
+        href:
+          "https://archive.org/details/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        img:
+          "https://archive.org/services/img/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        by: "melodic galoiwin - pagan tea break",
+        mediatype: "Texts",
+        views: "1001",
+        favorite: "20",
+        comment: "10"
+      },
+      {
+        title: "Pagan Tea Break - Introduction",
+        href:
+          "https://archive.org/details/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        img:
+          "https://archive.org/services/img/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        by: "melodic galoiwin - pagan tea break",
+        mediatype: "Texts",
+        views: "1001",
+        favorite: "20",
+        comment: "10"
+      },
+      {
+        title: "Pagan Tea Break - Introduction",
+        href:
+          "https://archive.org/details/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        img:
+          "https://archive.org/services/img/podcast_melodic-galoiwin-pagan-tea-b_pagan-tea-break-introduction_1000320178546",
+        by: "melodic galoiwin - pagan tea break",
+        mediatype: "Texts",
+        views: "1001",
+        favorite: "20",
+        comment: "10"
+      }
     ];
   }
 
