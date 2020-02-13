@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element";
-
+// import { tile } from "tile.js";
 const tile = html`
   <div class="item-ia" data-id="Tea_Party_Break_Up_" data-mediatype="texts">
     <div class="C234">
@@ -56,17 +56,79 @@ const tile = html`
 `;
 
 class Tile extends LitElement {
-  static get styles() {
-    return css`
-      a {
-        color: #000;
-      }
-    `;
-  }
   static get properties() {
     return {
       items: { type: Array }
     };
+  }
+
+  static get styles() {
+    return css`
+      .item-ia {
+        background-color: #fff;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        min-height: 20px;
+        margin-bottom: 30px;
+        border: 1px solid #e9e9e9;
+        color: #ccc;
+        position: absolute;
+        width: 180px;
+        text-align: center;
+      }
+      .hidden-tiles {
+        display: none !important;
+      }
+      .ttl {
+        margin-bottom: 3px;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 10px;
+        line-height: 1.2;
+        max-height: 42px;
+        overflow-y: hidden;
+        word-wrap: break-word !important;
+        text-align: left;
+        font-size: 14px;
+        color: #000 !important;
+      }
+      .by {
+        margin-bottom: 3px;
+        padding: 0 6px;
+        line-height: 1.2;
+        color: #979797;
+        text-align: left;
+        font-size: 10px;
+        max-height: 24px;
+        overflow-y: hidden;
+        word-wrap: break-word !important;
+      }
+      .mt-icon {
+        vertical-align: top;
+        display: inline-block;
+        padding: 0;
+        margin: 4px 6px 4px 0;
+        text-align: center;
+        font-size: 16px;
+        width: 21px;
+        color: #888;
+      }
+      h6.stat {
+        vertical-align: top;
+        display: inline-block;
+        margin-right: 10px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-align: center;
+        border-left: 1px solid #ccc;
+        padding: 1px 0 1px 10px;
+        font-size: 9px;
+        font-weight: 200;
+        color: #979797;
+      }
+      a {
+        color: #000;
+      }
+    `;
   }
 
   constructor() {
